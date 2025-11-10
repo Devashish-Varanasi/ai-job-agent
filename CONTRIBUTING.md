@@ -37,7 +37,7 @@ Enhancement suggestions are welcome! Please include:
 
 ```bash
 # Clone your fork
-git clone https://github.com/your-username/ai-job-agent.git
+git clone https://github.com/Devashish-Varanasi/ai-job-agent.git
 cd ai-job-agent
 
 # Install dependencies

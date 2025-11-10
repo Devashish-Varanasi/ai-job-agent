@@ -80,7 +80,7 @@ git commit -m "Initial commit: AI Job Agent v1.0.0"
 
 ### 3. Connect to GitHub
 ```bash
-git remote add origin https://github.com/YOUR_USERNAME/ai-job-agent.git
+git remote add origin https://github.com/Devashish-Varanasi/ai-job-agent.git
 git branch -M main
 git push -u origin main
 ```
@@ -99,7 +99,7 @@ git clone https://github.com/yourusername/ai-job-agent.git
 ```
 With your actual GitHub username:
 ```markdown
-git clone https://github.com/YOUR_USERNAME/ai-job-agent.git
+git clone https://github.com/Devashish-Varanasi/ai-job-agent.git
 ```
 
 ### 6. Verify .gitignore is Working
