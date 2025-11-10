@@ -1,0 +1,13 @@
+# Outputs Directory
+
+This directory stores the generated CSV files with job matches and similarity scores.
+
+Files are automatically named with timestamps:
+- `jobs_data_analyst_20251110_143025.csv`
+- `jobs_software_engineer_20251111_092045.csv`
+
+Each CSV contains:
+- Job ID, Title, Company, Location
+- Similarity Score
+- Application Link
+- Generated Cover Letter Text

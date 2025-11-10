@@ -1,0 +1,8 @@
+# Data Directory
+
+Place your resume file (PDF, DOCX, or TXT) in this directory.
+
+Then update `config.py`:
+```python
+DEFAULT_RESUME = "data/your_resume.pdf"
+```

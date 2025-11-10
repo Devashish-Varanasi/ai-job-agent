@@ -1,0 +1,6 @@
+pymupdf
+python-docx
+requests
+pandas
+sentence-transformers
+gpt4all

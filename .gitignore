@@ -1,0 +1,102 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+PIPFILE.lock
+
+# Virtual Environment
+venv/
+env/
+ENV/
+.venv
+virtualenv/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+*.code-workspace
+
+# Project specific - IMPORTANT: Protects your data!
+config.py
+outputs/*.csv
+cover_letters/**/*.docx
+cover_letters/*/
+data/*.pdf
+data/*.docx
+data/*.txt
+!data/.gitkeep
+!data/README.md
+
+# Models (large files - don't commit to GitHub)
+models/*.bin
+models/*.gguf
+models/*.ggml
+!models/.gitkeep
+!models/README.md
+
+# Logs and temporary files
+*.log
+*.tmp
+*.temp
+
+# API Keys and secrets (CRITICAL - never commit!)
+config_local.py
+.env
+.env.local
+secrets.py
+
+# OS specific
+Thumbs.db
+.DS_Store
+ehthumbs.db
+Desktop.ini
+
+# Test outputs
+test_outputs/
+temp/
+tmp/
+__test__/
+
+# Documentation builds
+docs/_build/
+docs/AI_Job_Agent_Documentation.pdf
+
+# Jupyter Notebooks (if any)
+.ipynb_checkpoints/
+*.ipynb
+
+# Coverage reports
+htmlcov/
+.coverage
+.coverage.*
+coverage.xml
+*.cover
+
+# pytest
+.pytest_cache/
+
+# mypy
+.mypy_cache/
+.dmypy.json
+dmypy.json
