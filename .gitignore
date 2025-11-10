@@ -49,24 +49,9 @@ data/*.txt
 !data/README.md
 
 # Models (large files - don't commit to GitHub)
-models/*.bin
-models/*.gguf
-models/*.ggml
-models/*.pth
-models/resources/*.gguf
-models/resources/*.bin
-models/resources/*.pth
-models/bin/
-models/installer*
-models/maintenancetool*
-models/localdocs*
-models/*.exe
-models/*.dat
-models/*.xml
-models/*.png
-models/*.ico
+# Users should download GPT4All separately - see README.md
+models/*
 !models/.gitkeep
-!models/README.md
 
 # Logs and temporary files
 *.log

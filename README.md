@@ -122,16 +122,51 @@ Unlike generic templates, our cover letters:
 
 For enhanced cover letter quality using a local AI model:
 
-1. Download a GPT4All model (recommended: `orca-mini-3b-gguf2-q4_0.gguf` for 8GB RAM systems)
-2. Place it in `C:\Users\<YourName>\AppData\Local\nomic.ai\GPT4All\`
-3. Update `config.py`:
+**⚠️ Note**: GPT4All and model files are NOT included in this repository due to their large size. You need to download them separately.
+
+#### Option 1: Download GPT4All Desktop App (Recommended - Easiest)
+
+1. **Download GPT4All**: Visit https://gpt4all.io/ and download the desktop application for your OS
+2. **Install and Open** the GPT4All application
+3. **Download a Model**: 
+   - Open GPT4All → Click "Models" tab
+   - Download **"Orca Mini 3B"** (recommended for 8GB RAM systems) or **"Mistral 7B"** (for 16GB+ RAM)
+   - Models are saved to:
+     - Windows: `C:\Users\<YourName>\AppData\Local\nomic.ai\GPT4All\`
+     - macOS: `~/Library/Application Support/nomic.ai/GPT4All/`
+     - Linux: `~/.local/share/nomic.ai/GPT4All/`
+
+4. **Update config.py**:
    ```python
+   # Windows example
    LOCAL_LLM_MODEL_PATH = r"C:\Users\YourName\AppData\Local\nomic.ai\GPT4All\orca-mini-3b-gguf2-q4_0.gguf"
+   
+   # macOS/Linux example
+   LOCAL_LLM_MODEL_PATH = "/Users/yourname/Library/Application Support/nomic.ai/GPT4All/orca-mini-3b-gguf2-q4_0.gguf"
    ```
 
-See [GPT4ALL_SETUP.md](GPT4ALL_SETUP.md) for detailed instructions.
+#### Option 2: Direct Model Download (Advanced)
 
-**Note**: Template-based generation (default) works excellently without LLM setup.
+1. Visit https://gpt4all.io/models/
+2. Download a model file (e.g., `orca-mini-3b-gguf2-q4_0.gguf`)
+3. Place it anywhere on your computer
+4. Update `LOCAL_LLM_MODEL_PATH` in `config.py` with the full path
+
+**Recommended Models by RAM:**
+- **4-8 GB RAM**: `orca-mini-3b-gguf2-q4_0.gguf` (~1.8GB)
+- **8-16 GB RAM**: `mistral-7b-openorca.gguf2.Q4_0.gguf` (~4GB)
+- **16+ GB RAM**: `mistral-7b-instruct-v0.1.Q4_0.gguf` (~4.1GB)
+
+#### Why Not Include Models in the Repo?
+
+- Model files are 1.8GB - 4GB each
+- GitHub has a 100MB file size limit
+- Users can choose models based on their RAM
+- Keeps the repository lightweight and fast to clone
+
+**Note**: The template-based cover letter generation works excellently without LLM setup - GPT4All is completely optional!
+
+See [GPT4ALL_SETUP.md](GPT4ALL_SETUP.md) for detailed instructions.
 
 ## 📚 Project Structure
 
