@@ -26,7 +26,7 @@ An intelligent automation system that streamlines your job search by parsing you
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/yourusername/ai-job-agent.git
+   git clone https://github.com/Devashish-Varanasi/ai-job-agent.git
    cd ai-job-agent
    ```
 
