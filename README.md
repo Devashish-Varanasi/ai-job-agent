@@ -79,7 +79,7 @@ outputs/
 └── jobs_data_analyst_20251110_143025.csv    # Timestamped CSV with job matches
 
 cover_letters/
-└── Devashish_Varanasi_2025-11-10/           # Folder named with your name + date
+└── John_Doe_2025-11-10/           # Folder named with your name + date
     ├── CoverLetter_Google_Data_Analyst_123456.docx
     ├── CoverLetter_Microsoft_ML_Engineer_789012.docx
     └── ... (one DOCX per job)

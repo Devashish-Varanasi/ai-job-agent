@@ -28,7 +28,7 @@ CSV File (in outputs/ folder):
   
 Cover Letters Folder (in cover_letters/ folder):
   Format: <YourName>_<TodayDate>/
-  Example: cover_letters/Devashish_Varanasi_2025-11-10/
+  Example: cover_letters/John_Doe_2025-11-10/
   
   Inside this folder:
     - CoverLetter_<Company>_<JobTitle>_<JobID>.docx (for each job)
@@ -50,17 +50,17 @@ WHAT HAPPENS EACH RUN
 
 Run 1 (10:30 AM):
   - outputs/jobs_data_analyst_20251110_103045.csv
-  - cover_letters/Devashish_Varanasi_2025-11-10/
+  - cover_letters/John_Doe_2025-11-10/
     (Contains all cover letters as DOCX files)
 
 Run 2 (2:45 PM - same day):
   - outputs/jobs_data_analyst_20251110_144532.csv
-  - cover_letters/Devashish_Varanasi_2025-11-10/
+  - cover_letters/John_Doe_2025-11-10/
     (Adds to the same folder if same day, or creates new if different day)
 
 Run 3 (Next day):
   - outputs/jobs_data_analyst_20251111_090015.csv
-  - cover_letters/Devashish_Varanasi_2025-11-11/
+  - cover_letters/John_Doe_2025-11-11/
     (New folder for new date)
 
 ================================================================================
