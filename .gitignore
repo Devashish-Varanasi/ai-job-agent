@@ -52,6 +52,19 @@ data/*.txt
 models/*.bin
 models/*.gguf
 models/*.ggml
+models/*.pth
+models/resources/*.gguf
+models/resources/*.bin
+models/resources/*.pth
+models/bin/
+models/installer*
+models/maintenancetool*
+models/localdocs*
+models/*.exe
+models/*.dat
+models/*.xml
+models/*.png
+models/*.ico
 !models/.gitkeep
 !models/README.md
 
