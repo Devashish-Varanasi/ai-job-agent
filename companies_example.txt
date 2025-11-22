@@ -1,0 +1,23 @@
+# Company Watchlist
+# Add one company name per line
+# Lines starting with # are ignored
+
+# FAANG Companies
+Google
+Amazon
+Meta
+Apple
+Netflix
+
+# Other Tech Giants
+Microsoft
+Tesla
+Uber
+Airbnb
+
+# Consulting Firms
+McKinsey
+Boston Consulting Group
+Deloitte
+
+# Add your target companies below:

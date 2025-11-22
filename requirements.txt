@@ -4,3 +4,4 @@ requests
 pandas
 sentence-transformers
 gpt4all
+beautifulsoup4

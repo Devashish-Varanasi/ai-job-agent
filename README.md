@@ -1,253 +1,357 @@
-# 🤖 AI Job Agent - Automated Job Matching & Cover Letter Generator
+# AI Job Agent 🤖
 
-[![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-
-An intelligent automation system that streamlines your job search by parsing your resume, finding relevant job listings, computing similarity scores, and generating personalized, professional cover letters—all with a single command.
+An intelligent job search automation tool that helps you find relevant job opportunities and generate personalized cover letters based on your resume. This tool automates the tedious parts of job searching by scraping job listings, matching them to your skills, and creating tailored cover letters.
 
 ## ✨ Features
 
-- 📄 **Smart Resume Parsing** - Extracts name, contact info, skills, and experience from PDF, DOCX, or TXT
-- 🎯 **Auto Job Role Detection** - Automatically identifies target job roles from your resume
-- 🔍 **Job Fetching** - Integrates with Adzuna API to fetch relevant job listings
-- 📊 **Similarity Scoring** - Ranks jobs by relevance using semantic text analysis
-- ✍️ **AI-Powered Cover Letters** - Generates resume-focused cover letters (80-90% from YOUR resume)
-- 📁 **Organized Outputs** - Unique timestamped CSVs and professionally formatted DOCX cover letters
-- ⚡ **One-Command Automation** - Complete workflow in a single command
+- **📄 Smart Resume Parsing**: Automatically extracts skills, experience, education, and contact information from your resume (supports PDF, DOCX, and TXT formats)
+- **🔍 Automated Job Scraping**: Fetches job listings from popular job boards using web scraping
+- **🎯 AI-Powered Job Matching**: Ranks jobs by relevance to your resume using semantic similarity scoring (Sentence Transformers)
+- **✍️ Personalized Cover Letter Generation**: Creates unique, personalized cover letters for each job (80-90% based on your resume, 10-20% job-specific)
+- **🏢 Company Watchlist**: Monitors specific companies and sends email alerts when they post matching jobs
+- **📊 Professional Output**: Generates CSV files with job details and professionally formatted DOCX cover letters
+- **🎨 Multiple Resume Support**: Automatically detects and lets you choose if multiple resumes exist in the data folder
 
-## 🚀 Quick Start
+## 🛠️ Technology Stack
 
-### Prerequisites
+- **Python 3.8+**: Core programming language
+- **BeautifulSoup4**: Web scraping for job listings
+- **Sentence Transformers**: Semantic similarity scoring using AI embeddings
+- **PyMuPDF (fitz)**: PDF parsing and text extraction
+- **python-docx**: Professional DOCX cover letter generation
+- **pandas**: Data manipulation and CSV export
+- **GPT4All (Optional)**: Local LLM for enhanced cover letter generation
+
+## 📋 Prerequisites
 
 - Python 3.8 or higher
-- pip package manager
+- pip (Python package manager)
+- Internet connection (for web scraping and downloading models)
 
-### Installation
+## 🚀 Installation
 
-1. **Clone the repository**
+### Step 1: Clone the Repository
+
+```bash
+git clone https://github.com/Devashish-Varanasi/ai-job-agent.git
+cd ai-job-agent
+```
+
+### Step 2: Create a Virtual Environment (Recommended)
+
+```bash
+# Windows
+python -m venv venv
+venv\Scripts\activate
+
+# Linux/Mac
+python3 -m venv venv
+source venv/bin/activate
+```
+
+### Step 3: Install Dependencies
+
+```bash
+pip install -r requirements.txt
+```
+
+### Step 4: Set Up Configuration
+
+1. **Copy the configuration template:**
    ```bash
-   git clone https://github.com/Devashish-Varanasi/ai-job-agent.git
-   cd ai-job-agent
+   cp config_example.py config.py
    ```
 
-2. **Install dependencies**
+2. **Update `config.py` with your settings:**
+   ```python
+   DEFAULT_RESUME = "data/your_resume.pdf"  # Update with your resume filename
+   SCRAPE_RESULTS_LIMIT = 20  # Number of jobs to fetch
+   ```
+
+3. **Place your resume in the `data/` folder:**
+   - Supported formats: PDF, DOCX, TXT
+   - Name it according to what you set in `config.py`
+
+### Step 5: (Optional) Set Up Email Alerts
+
+1. **Copy the email configuration template:**
    ```bash
-   pip install -r requirements.txt
+   cp email_config_example.py email_config.py
    ```
 
-3. **Configure API keys**
-   
-   Edit `config.py` and add your Adzuna API credentials:
-   ```python
-   ADZUNA_APP_ID = "your_app_id_here"
-   ADZUNA_APP_KEY = "your_app_key_here"
-   ```
-   
-   Get free API keys at: https://developer.adzuna.com/
+2. **For Gmail users:**
+   - Enable 2-factor authentication in your Google Account
+   - Generate an App Password at: https://myaccount.google.com/apppasswords
+   - Update `email_config.py` with your email and app password (NOT your regular password)
 
-4. **Add your resume**
-   
-   Place your resume (PDF/DOCX/TXT) in the `data/` folder and update `config.py`:
-   ```python
-   DEFAULT_RESUME = "data/your_resume.pdf"
-   ```
+3. **For other email providers:**
+   - Update SMTP settings in `email_config.py`
+   - See comments in the file for provider-specific settings
+
+### Step 6: (Optional) Install GPT4All Model
+
+For enhanced cover letter generation using local LLM:
+
+1. Download the model file from [GPT4All](https://gpt4all.io/index.html)
+2. Place it in the `models/` folder
+3. Update `LOCAL_LLM_MODEL_PATH` in `config.py` to point to the model file
+
+**Note:** If no model is found, the system will automatically use a template-based approach that still produces excellent, personalized cover letters.
+
+## 📖 Usage
 
 ### Basic Usage
 
-**Run the complete automation pipeline:**
+Simply run the automation script:
+
 ```bash
 python run_automation.py
 ```
 
-That's it! The system will:
-1. Parse your resume
-2. Auto-detect your target job role
-3. Fetch matching jobs
-4. Generate personalized cover letters
-5. Save everything in organized folders
+The script will:
+1. ✅ Automatically detect and parse your resume
+2. ✅ Auto-detect your target job role from resume content
+3. ✅ Scrape relevant job listings
+4. ✅ Match jobs to your resume using AI
+5. ✅ Generate personalized cover letters for each job
+6. ✅ Save results to CSV and DOCX files
 
-**Manual job type selection:**
-```bash
-python run_automation.py "data scientist"
-python run_automation.py "software engineer" "Bangalore"
-```
+### With Company Watchlist
 
-## 📂 Output Structure
-
-```
-outputs/
-└── jobs_data_analyst_20251110_143025.csv    # Timestamped CSV with job matches
-
-cover_letters/
-└── John_Doe_2025-11-10/           # Folder named with your name + date
-    ├── CoverLetter_Google_Data_Analyst_123456.docx
-    ├── CoverLetter_Microsoft_ML_Engineer_789012.docx
-    └── ... (one DOCX per job)
-```
-
-### Output Details
-
-**CSV File** (`outputs/jobs_<job_type>_<timestamp>.csv`):
-- Job ID, Title, Company, Location
-- Similarity Score (relevance to your resume)
-- Application Link
-- Generated Cover Letter Text
-
-**Cover Letter Folder** (`cover_letters/<YourName>_<YYYY-MM-DD>/`):
-- Professional DOCX files for each job
-- Times New Roman, 12pt font
-- Formal business letter format
-- Includes YOUR actual name, email, phone
-- Resume-focused content (80-90% from your resume)
-
-## 🎯 Key Advantages
-
-### Resume-Focused Cover Letters
-Unlike generic templates, our cover letters:
-- ✅ Showcase **YOUR** skills and experience (8-10 skills mentioned)
-- ✅ Use **YOUR** actual achievements and background
-- ✅ Include **YOUR** real name and contact information
-- ✅ Minimize job description references (only 10-20%)
-- ✅ No manual editing required—ready to send!
-
-### Intelligent Automation
-- **Auto-detection**: Analyzes your resume to identify the best job role
-- **Unique filenames**: Never overwrites previous runs
-- **Organized by date**: Easy to track applications over time
-- **Professional formatting**: Industry-standard DOCX format
-
-## 🛠️ Advanced Configuration
-
-### GPT4All Local LLM (Optional)
-
-For enhanced cover letter quality using a local AI model:
-
-**⚠️ Note**: GPT4All and model files are NOT included in this repository due to their large size. You need to download them separately.
-
-#### Option 1: Download GPT4All Desktop App (Recommended - Easiest)
-
-1. **Download GPT4All**: Visit https://gpt4all.io/ and download the desktop application for your OS
-2. **Install and Open** the GPT4All application
-3. **Download a Model**: 
-   - Open GPT4All → Click "Models" tab
-   - Download **"Orca Mini 3B"** (recommended for 8GB RAM systems) or **"Mistral 7B"** (for 16GB+ RAM)
-   - Models are saved to:
-     - Windows: `C:\Users\<YourName>\AppData\Local\nomic.ai\GPT4All\`
-     - macOS: `~/Library/Application Support/nomic.ai/GPT4All/`
-     - Linux: `~/.local/share/nomic.ai/GPT4All/`
-
-4. **Update config.py**:
-   ```python
-   # Windows example
-   LOCAL_LLM_MODEL_PATH = r"C:\Users\YourName\AppData\Local\nomic.ai\GPT4All\orca-mini-3b-gguf2-q4_0.gguf"
-   
-   # macOS/Linux example
-   LOCAL_LLM_MODEL_PATH = "/Users/yourname/Library/Application Support/nomic.ai/GPT4All/orca-mini-3b-gguf2-q4_0.gguf"
+1. Create `companies.txt` in the project root:
+   ```
+   Google
+   Microsoft
+   Amazon
+   Apple
    ```
 
-#### Option 2: Direct Model Download (Advanced)
+2. Run the automation:
+   ```bash
+   python run_automation.py
+   ```
 
-1. Visit https://gpt4all.io/models/
-2. Download a model file (e.g., `orca-mini-3b-gguf2-q4_0.gguf`)
-3. Place it anywhere on your computer
-4. Update `LOCAL_LLM_MODEL_PATH` in `config.py` with the full path
+3. If any jobs match your watchlist companies, you'll receive email alerts (if configured).
 
-**Recommended Models by RAM:**
-- **4-8 GB RAM**: `orca-mini-3b-gguf2-q4_0.gguf` (~1.8GB)
-- **8-16 GB RAM**: `mistral-7b-openorca.gguf2.Q4_0.gguf` (~4GB)
-- **16+ GB RAM**: `mistral-7b-instruct-v0.1.Q4_0.gguf` (~4.1GB)
+### Multiple Resumes
 
-#### Why Not Include Models in the Repo?
+If you have multiple resumes in the `data/` folder, the system will prompt you to select one:
 
-- Model files are 1.8GB - 4GB each
-- GitHub has a 100MB file size limit
-- Users can choose models based on their RAM
-- Keeps the repository lightweight and fast to clone
+```
+📁 Found 3 resume files in the data directory:
+  1. resume_dev.pdf
+  2. resume_data_analyst.pdf
+  3. resume_engineer.pdf
 
-**Note**: The template-based cover letter generation works excellently without LLM setup - GPT4All is completely optional!
+Please select a resume (1-3): 
+```
 
-See [GPT4ALL_SETUP.md](GPT4ALL_SETUP.md) for detailed instructions.
+### Custom Job Search
 
-## 📚 Project Structure
+You can also run the automation with specific parameters (though auto-detection is recommended):
+
+```bash
+python app.py
+```
+
+Then modify the `run_pipeline()` call in `app.py` with your parameters.
+
+## 📁 Project Structure
 
 ```
 ai-job-agent/
-├── src/
-│   ├── parse_resume.py      # Resume parsing and job role detection
-│   ├── fetch_jobs.py         # Adzuna API integration
-│   ├── match_jobs.py         # Similarity scoring
-│   ├── generate_cover.py     # Cover letter generation
-│   ├── export_results.py     # CSV export
-│   └── utils.py              # Helper functions
-├── data/
-│   └── your_resume.pdf       # Place your resume here
-├── outputs/                  # Generated CSV files
-├── cover_letters/            # Generated DOCX cover letters
-├── models/                   # Optional: GPT4All models
-├── app.py                    # Main pipeline orchestrator
-├── run_automation.py         # Single-command automation
-├── config.py                 # Configuration settings
-└── requirements.txt          # Python dependencies
+├── src/                          # Source code modules
+│   ├── parse_resume.py          # Resume parsing and role detection
+│   ├── fetch_jobs.py            # Web scraping job listings
+│   ├── match_jobs.py            # Semantic similarity scoring
+│   ├── generate_cover.py        # Cover letter generation (LLM + template)
+│   ├── export_results.py        # CSV export functionality
+│   └── utils.py                 # Utility functions
+├── app.py                       # Main pipeline orchestration
+├── run_automation.py            # Entry point script (recommended)
+├── config_example.py            # Configuration template
+├── config.py                    # Your configuration (not in git)
+├── email_config_example.py      # Email configuration template
+├── email_config.py              # Your email config (not in git)
+├── companies_example.txt        # Company watchlist template
+├── companies.txt                # Your watchlist (not in git)
+├── requirements.txt             # Python dependencies
+├── README.md                    # This file
+├── CHANGELOG.md                 # Version history
+├── CONTRIBUTING.md              # Contribution guidelines
+├── SECURITY.md                  # Security policy
+├── LICENSE                      # MIT License
+├── .gitignore                   # Git ignore patterns
+├── data/                        # Your resume files (not in git)
+│   ├── .gitkeep
+│   └── README.md
+├── outputs/                     # Generated CSV files (not in git)
+│   └── .gitkeep
+├── cover_letters/               # Generated cover letters (not in git)
+│   └── .gitkeep
+└── models/                      # GPT4All models (not in git)
+    └── .gitkeep
 ```
 
-## 🧪 Testing
+## 🎯 How It Works
 
-Verify your setup:
+1. **Resume Analysis** 📄
+   - Parses your resume (PDF/DOCX/TXT)
+   - Extracts: name, email, phone, skills, experience, education
+   - Automatically detects your target job role based on content
 
-```bash
-# Test auto-detection
-python test_auto_detection.py
+2. **Job Scraping** 🔍
+   - Scrapes job listings from job boards
+   - Extracts: title, company, location, description, URL
+   - Handles errors gracefully with fallback options
 
-# Preview a cover letter
-python preview_cover_letter.py
+3. **Semantic Matching** 🎯
+   - Uses Sentence Transformers to create embeddings
+   - Computes cosine similarity between resume and job descriptions
+   - Ranks jobs by relevance score
 
-# Generate sample cover letters (3 jobs)
-python generate_sample_covers.py
+4. **Cover Letter Generation** ✍️
+   - Creates personalized cover letters for each job
+   - Uses exact details from your resume (name, skills, experience)
+   - Personalizes for each specific company
+   - Format: Professional DOCX files with proper formatting
 
-# Full system verification
-python final_test_results.py
+5. **Company Monitoring** 🏢
+   - Checks jobs against your watchlist
+   - Sends email alerts for matches (if configured)
+   - Uses fuzzy matching for company names
+
+6. **Output Generation** 📊
+   - Saves job listings to timestamped CSV files
+   - Saves cover letters to organized folders (by date and name)
+   - All files are professionally formatted and ready to use
+
+## ⚙️ Configuration
+
+### Main Configuration (`config.py`)
+
+```python
+# Resume path (required)
+DEFAULT_RESUME = "data/your_resume.pdf"
+
+# Web scraping settings
+USER_AGENT = "Mozilla/5.0..."  # Browser user agent
+SCRAPE_RESULTS_LIMIT = 20       # Number of jobs to fetch
+
+# Local LLM (optional)
+LOCAL_LLM_MODEL_PATH = "models/orca-mini-3b-gguf2-q4_0.gguf"
+
+# Output directories
+OUTPUT_CSV = "outputs/jobs.csv"
+COVER_LETTERS_DIR = "cover_letters"
 ```
 
-## 📋 Requirements
+### Email Configuration (`email_config.py`)
 
-- Python 3.8+
-- PyMuPDF (fitz) - PDF parsing
-- python-docx - DOCX generation
-- requests - API calls
-- pandas - Data handling
-- sentence-transformers - Similarity scoring
-- gpt4all (optional) - Local LLM
+```python
+EMAIL_ENABLED = True
+SMTP_SERVER = "smtp.gmail.com"
+SMTP_PORT = 587
+SENDER_EMAIL = "your_email@gmail.com"
+SENDER_PASSWORD = "your_app_password"  # Gmail App Password
+RECIPIENT_EMAIL = "your_email@gmail.com"
+```
 
-All dependencies listed in `requirements.txt`
+**⚠️ Security Note:** Never commit `config.py` or `email_config.py` to git. They contain sensitive information and are already in `.gitignore`.
+
+## 📝 Output Files
+
+### CSV File (`outputs/jobs_[role]_[timestamp].csv`)
+
+Contains:
+- Job ID
+- Title
+- Company
+- Location
+- Similarity Score (0-1)
+- Job URL
+- Cover Letter Text
+
+### Cover Letters (`cover_letters/[Name]_[Date]/`)
+
+Each cover letter is saved as:
+- `CoverLetter_[Company]_[Title]_[ID].docx`
+
+Features:
+- Professional formatting
+- Your exact contact information from resume
+- Company-specific personalization
+- Ready to submit
 
 ## 🤝 Contributing
 
-Contributions are welcome! Please feel free to submit a Pull Request.
+Contributions are welcome! Please see [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
+
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add some amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
 
 ## 📄 License
 
-This project is licensed under the MIT License - see the LICENSE file for details.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## 🙏 Acknowledgments
+## 🔒 Security
 
-- Adzuna API for job listings
-- GPT4All for local LLM capabilities
-- Sentence Transformers for semantic similarity
+- **Never commit sensitive files**: `config.py`, `email_config.py`, `companies.txt`, and resume files are already in `.gitignore`
+- **Use App Passwords**: For Gmail, always use App Passwords, never your regular password
+- **Keep credentials secure**: Store credentials only in local config files, never in version control
+
+See [SECURITY.md](SECURITY.md) for more security information.
+
+## 🐛 Troubleshooting
+
+### Issue: Resume not found
+**Solution:** Ensure your resume file is in the `data/` folder and the filename matches what's in `config.py`
+
+### Issue: No jobs found
+**Solution:** Check your internet connection. The scraper may need adjustments if job board structure changes.
+
+### Issue: Email alerts not working
+**Solution:** 
+- Verify `email_config.py` is set up correctly
+- For Gmail, ensure you're using an App Password, not your regular password
+- Check that `EMAIL_ENABLED = True`
+
+### Issue: Cover letters look wrong
+**Solution:** Ensure your resume has a name, skills, and experience sections that can be parsed.
+
+### Issue: Module not found errors
+**Solution:** Make sure you've activated your virtual environment and installed all dependencies:
+```bash
+pip install -r requirements.txt
+```
+
+## 💡 Tips
+
+- **Resume Format**: Ensure your resume has clear sections (Experience, Education, Skills) for best parsing results
+- **Company Watchlist**: Use partial company names for better matching (e.g., "Tech" matches "Tech Innovations Inc.")
+- **Cover Letters**: Review generated cover letters before sending - they're personalized but should be reviewed
+- **Multiple Runs**: Each run creates new files with timestamps, so previous results are preserved
+- **Local LLM**: For better cover letter quality, consider using GPT4All with a local model
 
 ## 📞 Support
 
-If you encounter issues:
-1. Check the [GPT4ALL_SETUP.md](GPT4ALL_SETUP.md) guide
-2. Review [AUTOMATION_GUIDE.txt](AUTOMATION_GUIDE.txt)
-3. Open an issue on GitHub
+- **Issues**: Open an issue on GitHub for bugs or feature requests
+- **Questions**: Check existing issues or open a new one for questions
+- **Contributions**: See [CONTRIBUTING.md](CONTRIBUTING.md) for contribution guidelines
 
-## 🎓 Use Cases
+## 🙏 Acknowledgments
 
-- **Job Seekers**: Automate cover letter writing and job discovery
-- **Career Coaches**: Generate customized applications for clients
-- **Recruiters**: Quick candidate-job matching
-- **Students**: Streamline internship/job applications
+- **BeautifulSoup4**: For web scraping capabilities
+- **Sentence Transformers**: For semantic similarity matching
+- **PyMuPDF**: For PDF parsing
+- **python-docx**: For DOCX generation
+- **GPT4All**: For optional local LLM support
 
 ---
 
-**Made with ❤️ to help you land your dream job faster!**
+**Made with ❤️ for job seekers everywhere**
+
+*Happy job hunting! 🚀*

@@ -3,22 +3,18 @@
 # 
 # Quick Setup:
 # 1. Copy this file: cp config_example.py config.py
-# 2. Get Adzuna API keys: https://developer.adzuna.com/
-# 3. Update ADZUNA_APP_ID and ADZUNA_APP_KEY
-# 4. Add your resume to data/ folder
-# 5. Update DEFAULT_RESUME path
+# 2. Add your resume to data/ folder
+# 3. Update DEFAULT_RESUME path
 
 # ============================================================================
-# ADZUNA API CONFIGURATION (REQUIRED)
+# WEB SCRAPING SETTINGS
 # ============================================================================
-ADZUNA_APP_ID = "your_app_id_here"
-ADZUNA_APP_KEY = "your_app_key_here"
-ADZUNA_COUNTRY = "us"  # 'us', 'gb', 'in', 'ca', 'au', etc.
+USER_AGENT = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36"
 
 # ============================================================================
 # SEARCH SETTINGS
 # ============================================================================
-ADZUNA_RESULTS_PER_PAGE = 20
+SCRAPE_RESULTS_LIMIT = 20
 
 # ============================================================================
 # LOCAL LLM CONFIGURATION (OPTIONAL)

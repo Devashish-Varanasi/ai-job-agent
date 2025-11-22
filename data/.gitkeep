@@ -1,8 +1,3 @@
-# Data Directory
-
-Place your resume file (PDF, DOCX, or TXT) in this directory.
-
-Then update `config.py`:
-```python
-DEFAULT_RESUME = "data/your_resume.pdf"
-```
+# This file ensures the data directory is tracked by Git
+# Place your resume files (PDF, DOCX, or TXT) in this directory
+# Resume files are automatically ignored by .gitignore to protect your privacy

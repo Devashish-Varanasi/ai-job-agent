@@ -1,105 +1,100 @@
 # Contributing to AI Job Agent
 
-First off, thank you for considering contributing to AI Job Agent! It's people like you that make this tool better for everyone.
+Thank you for your interest in contributing to AI Job Agent! This document provides guidelines and information to help you contribute effectively.
 
-## How Can I Contribute?
+## 🤝 How to Contribute
 
-### Reporting Bugs
+There are several ways you can contribute to this project:
 
-Before creating bug reports, please check existing issues to avoid duplicates. When creating a bug report, include:
+1. **Report Bugs**: If you find a bug, please open an issue with a detailed description
+2. **Suggest Features**: Have an idea for improvement? Open an issue to discuss it
+3. **Submit Code**: Fix bugs, implement features, or improve documentation
+4. **Improve Documentation**: Help make the documentation clearer and more comprehensive
 
-- **Clear title and description**
-- **Steps to reproduce**
-- **Expected vs actual behavior**
-- **Python version and OS**
-- **Error messages or logs**
+## 🛠️ Development Setup
 
-### Suggesting Enhancements
+1. Fork the repository
+2. Clone your fork:
+   ```bash
+   git clone https://github.com/Devashish-Varanasi/ai-job-agent.git
+   cd ai-job-agent
+   ```
 
-Enhancement suggestions are welcome! Please include:
+3. Create a virtual environment:
+   ```bash
+   python -m venv venv
+   source venv/bin/activate  # On Windows: venv\Scripts\activate
+   ```
 
-- **Use case**: Why is this enhancement useful?
-- **Detailed description**: What should happen?
-- **Examples**: Show how it would work
-- **Alternatives considered**
+4. Install dependencies:
+   ```bash
+   pip install -r requirements.txt
+   ```
 
-### Pull Requests
+## 📝 Coding Standards
 
-1. **Fork the repository**
-2. **Create a branch**: `git checkout -b feature/amazing-feature`
-3. **Make your changes**
-4. **Test thoroughly**
-5. **Commit**: `git commit -m 'Add amazing feature'`
-6. **Push**: `git push origin feature/amazing-feature`
-7. **Open a Pull Request**
-
-## Development Setup
-
-```bash
-# Clone your fork
-git clone https://github.com/Devashish-Varanasi/ai-job-agent.git
-cd ai-job-agent
-
-# Install dependencies
-pip install -r requirements.txt
-
-# Run tests
-python final_test_results.py
-```
-
-## Coding Guidelines
-
-### Python Style
-- Follow PEP 8
-- Use meaningful variable names
-- Add docstrings to functions
+### Python Style Guide
+- Follow PEP 8 style guide
+- Use meaningful variable and function names
+- Write docstrings for all functions and classes
 - Keep functions focused and small
+- Use type hints where appropriate
+
+### Git Workflow
+1. Create a feature branch from `main`:
+   ```bash
+   git checkout -b feature/your-feature-name
+   ```
+
+2. Make your changes
+3. Write clear, concise commit messages
+4. Push your branch and create a Pull Request
 
 ### Testing
-- Test your changes before submitting
-- Add test cases for new features
-- Ensure existing tests pass
+- Ensure your changes don't break existing functionality
+- Test your changes with different resume formats
+- Verify email alerts work correctly
+- Check that CSV and DOCX outputs are generated properly
 
-### Documentation
-- Update README.md if adding features
-- Add comments for complex logic
-- Update docstrings
+## 🐛 Reporting Bugs
 
-## Project Structure
+When reporting a bug, please include:
 
-```
-src/
-├── parse_resume.py      # Resume parsing
-├── fetch_jobs.py        # Job API integration
-├── match_jobs.py        # Similarity scoring
-├── generate_cover.py    # Cover letter generation
-└── export_results.py    # Output handling
-```
+1. **Clear description** of the issue
+2. **Steps to reproduce** the problem
+3. **Expected behavior** vs **actual behavior**
+4. **Environment details** (OS, Python version, etc.)
+5. **Screenshots** or **error messages** if applicable
 
-## Areas for Contribution
+## 💡 Suggesting Features
 
-### High Priority
-- [ ] Additional job board integrations (Indeed, LinkedIn)
-- [ ] Support for more resume formats
-- [ ] Multi-language support
-- [ ] Web interface
+To suggest a new feature:
 
-### Medium Priority
-- [ ] Improved job matching algorithms
-- [ ] Custom cover letter templates
-- [ ] Email integration
-- [ ] Application tracking
+1. Check if there's already an open issue for it
+2. Open a new issue with:
+   - Clear description of the feature
+   - Use cases and benefits
+   - Potential implementation approach (if you have ideas)
 
-### Good First Issues
-- [ ] Documentation improvements
-- [ ] Test coverage expansion
-- [ ] Error message enhancements
-- [ ] Code refactoring
+## 📖 Documentation
 
-## Questions?
+When contributing documentation:
 
-Feel free to open an issue with the `question` label if you need help!
+- Use clear, concise language
+- Follow the existing documentation style
+- Include examples where appropriate
+- Update README.md if your changes affect usage
 
----
+## 📜 License
 
-**Thank you for contributing!** 🎉
+By contributing to AI Job Agent, you agree that your contributions will be licensed under the MIT License.
+
+## 📞 Getting Help
+
+If you need help with contributing:
+
+1. Check the documentation
+2. Look at existing issues and pull requests
+3. Open a new issue with your question
+
+Thank you for contributing to AI Job Agent! 🚀

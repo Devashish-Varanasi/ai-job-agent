@@ -60,6 +60,8 @@ models/*
 
 # API Keys and secrets (CRITICAL - never commit!)
 config_local.py
+email_config.py  # Contains email credentials
+companies.txt    # Personal company watchlist
 .env
 .env.local
 secrets.py

@@ -1,72 +1,55 @@
 # Changelog
 
-All notable changes to AI Job Agent will be documented in this file.
+All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [1.0.0] - 2025-11-10
+## [Unreleased]
 
 ### Added
-- 🎉 **Initial Release**
-- Resume parsing from PDF, DOCX, and TXT formats
-- Automatic job role detection from resume content
-- Adzuna API integration for job fetching
-- Semantic similarity scoring between resume and jobs
-- AI-powered cover letter generation with GPT4All support
-- Template-based cover letter fallback
-- Professional DOCX cover letter output
-- Unique timestamped CSV exports
-- Organized output folders by applicant name and date
-- Single-command automation (`run_automation.py`)
-- Comprehensive test suite
-- Resume-focused cover letters (80-90% resume content)
+- **Personalized Cover Letters**: Each cover letter is now uniquely personalized for the specific company while strictly using exact resume details
+- **Multiple Resume Support**: Automatic detection and selection when multiple resumes exist in the data folder
+- **Exact Resume Details**: Cover letters now use exact name, email, phone, skills, and experience from parsed resume (no placeholders)
+- Company watchlist feature with fuzzy matching
+- Email alert system for watchlist companies
+- Comprehensive README documentation with detailed setup instructions
+- CHANGELOG file for tracking changes
+- `.gitkeep` files for empty directories (data, outputs, cover_letters, models)
+- Directory README files for better user guidance
 
-### Features
-- **Smart Resume Parser**: Extracts name, email, phone, skills, experience
-- **Auto Job Detection**: Analyzes resume to determine target role
-- **Job Matching**: Fetches and ranks jobs by relevance
-- **Cover Letter Generation**: 
-  - Local LLM (GPT4All) support
-  - Template-based fallback
-  - Resume-centric content
-  - Professional DOCX formatting
-- **Organized Outputs**:
-  - Timestamped CSV files
-  - Name and date-based cover letter folders
-  - No file overwrites
+### Changed
+- **Cover Letter Formatting**: Fixed alignment issues in header (email/phone on separate lines) and signature (name stays together)
+- **Template Generation**: Enhanced to use exact resume data with company-specific personalization
+- **LLM Prompts**: Updated to emphasize using only exact resume information
+- Replaced Adzuna API with BeautifulSoup web scraping
+- Renamed `fetch_adzuna_jobs` function to `fetch_jobs`
+- Updated configuration files to remove Adzuna API references
+- Improved company matching with partial name support
+- Enhanced error handling and user feedback
+- Updated `.gitignore` to protect sensitive files (config.py, email_config.py, companies.txt, resume files)
 
-### Documentation
-- Comprehensive README with quick start guide
-- GPT4All setup guide
-- Automation guide
-- Contributing guidelines
-- MIT License
+### Removed
+- All Adzuna API dependencies and references
+- Unnecessary test and debug files (`check_cover.py`, `test_resume.py`)
+- Real credentials from example configuration files
+- Redundant documentation files
 
-### Supported Job Roles
-- Data Analyst
-- Data Scientist
-- Data Engineer
-- Software Engineer
-- ML Engineer
-- Web Developer
-- DevOps Engineer
+## [1.0.0] - 2025-11-21
 
-## Roadmap
+### Added
+- Initial release of AI Job Agent
+- Resume parsing with automatic role detection
+- Web scraping job fetching (BeautifulSoup)
+- Semantic similarity matching
+- Cover letter generation
+- CSV export functionality
+- Basic email notification system
 
-### [1.1.0] - Planned
-- [ ] LinkedIn job integration
-- [ ] Indeed job integration
-- [ ] Email sending capability
-- [ ] Application tracking
-- [ ] Custom cover letter templates
+### Changed
+- Complete refactor from API-based to web scraping approach
+- Improved code organization and modularity
+- Enhanced documentation and user guidance
 
-### [1.2.0] - Future
-- [ ] Web interface
-- [ ] Multi-language support
-- [ ] Resume builder
-- [ ] Interview preparation
-
----
-
-For detailed changes, see [commit history](https://github.com/yourusername/ai-job-agent/commits/)
+[Unreleased]: https://github.com/Devashish-Varanasi/ai-job-agent/compare/v1.0.0...HEAD
+[1.0.0]: https://github.com/Devashish-Varanasi/ai-job-agent/releases/tag/v1.0.0

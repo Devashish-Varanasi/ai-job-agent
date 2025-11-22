@@ -1,0 +1,4 @@
+# This file ensures the cover_letters directory is tracked by Git
+# Generated cover letter DOCX files will be saved here
+# Cover letters are automatically ignored by .gitignore to protect your privacy
+
