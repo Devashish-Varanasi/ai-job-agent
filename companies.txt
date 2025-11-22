@@ -1,10 +1,6 @@
 # My target companies for email alerts (fuzzy matching enabled)
 # You can use partial names - system will match if company contains your keyword
 
-Tech Innovations
-Enterprise
-Global Solutions
-StartUp
-Consulting
+
 
 # Add more companies below:
