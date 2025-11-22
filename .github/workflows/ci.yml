@@ -37,7 +37,7 @@ jobs:
           echo "✓ Created config.py from config_example.py"
         else
           echo "Warning: config_example.py not found, creating minimal config.py"
-          cat <<EOF > config.py
+          cat << 'EOF' > config.py
 DEFAULT_RESUME = 'data/your_resume.pdf'
 SCRAPE_RESULTS_LIMIT = 20
 USER_AGENT = 'Mozilla/5.0'
@@ -99,7 +99,7 @@ EOF
           echo "✓ Created config.py from config_example.py"
         else
           echo "Warning: config_example.py not found, creating minimal config.py"
-          cat <<EOF > config.py
+          cat << 'EOF' > config.py
 DEFAULT_RESUME = 'data/your_resume.pdf'
 SCRAPE_RESULTS_LIMIT = 20
 USER_AGENT = 'Mozilla/5.0'
