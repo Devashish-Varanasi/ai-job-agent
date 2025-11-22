@@ -5,7 +5,13 @@ from src.fetch_jobs import fetch_jobs
 from src.match_jobs import compute_similarity
 from src.generate_cover import generate_cover, save_cover_letter_docx
 from src.export_results import export_to_csv
-from config import DEFAULT_RESUME
+
+# Import config with defaults for CI/testing
+try:
+    from config import DEFAULT_RESUME
+except ImportError:
+    DEFAULT_RESUME = "data/your_resume.pdf"
+
 from typing import Optional, List
 from datetime import datetime
 import os

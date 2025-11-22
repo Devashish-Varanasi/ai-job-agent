@@ -1,6 +1,6 @@
 # src/fetch_jobs.py
 import requests
-from typing import List, Dict
+from typing import List, Dict, Optional
 from bs4 import BeautifulSoup
 import hashlib
 
@@ -23,7 +23,7 @@ def _clean(t: str) -> str:
 def _get_text(el) -> str:
     return el.get_text(" ", strip=True) if el else ""
 
-def fetch_jobs(query: str, location: str = "", page: int = 1, results_per_page: int | None = None) -> List[Dict]:
+def fetch_jobs(query: str, location: str = "", page: int = 1, results_per_page: Optional[int] = None) -> List[Dict]:
     """
     Scrape jobs using HTML parsing (BeautifulSoup). Current sources:
     - Indeed (primary source)

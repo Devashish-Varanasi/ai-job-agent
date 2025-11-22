@@ -1,7 +1,12 @@
 # src/export_results.py
 import pandas as pd
 from typing import List, Dict
-from config import OUTPUT_CSV
+
+# Import config with defaults for CI/testing
+try:
+    from config import OUTPUT_CSV
+except ImportError:
+    OUTPUT_CSV = "outputs/jobs.csv"
 
 def export_to_csv(enriched_jobs: List[Dict], path: str = None):
     if path is None:

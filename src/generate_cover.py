@@ -1,12 +1,18 @@
 # src/generate_cover.py
-from typing import Dict
+from typing import Dict, Optional
 import os
 import json
 from datetime import datetime
 from docx import Document
 from docx.shared import Pt, Inches
 from docx.enum.text import WD_ALIGN_PARAGRAPH
-from config import LOCAL_LLM_MODEL_PATH, COVER_LETTERS_DIR
+
+# Import config with defaults for CI/testing
+try:
+    from config import LOCAL_LLM_MODEL_PATH, COVER_LETTERS_DIR
+except ImportError:
+    LOCAL_LLM_MODEL_PATH = "models/orca-mini-3b-gguf2-q4_0.gguf"
+    COVER_LETTERS_DIR = "cover_letters"
 
 # Try to use GPT4All if available, otherwise use a template fallback
 def generate_cover_with_template(resume_summary: Dict, job: Dict) -> str:
@@ -225,7 +231,7 @@ def generate_cover(resume_summary: Dict, job: Dict, prefer_local_llm: bool = Tru
             print(f"Error with fallback template: {e2}")
             return "Failed to generate cover letter due to technical issues."
 
-def save_cover_letter_docx(cover_text: str, job: Dict, resume_summary: Dict, output_dir: str | None = None) -> str:
+def save_cover_letter_docx(cover_text: str, job: Dict, resume_summary: Dict, output_dir: Optional[str] = None) -> str:
     """Save cover letter as a formatted DOCX file"""
     if output_dir is None:
         output_dir = COVER_LETTERS_DIR

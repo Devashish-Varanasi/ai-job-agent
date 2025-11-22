@@ -28,6 +28,28 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r requirements.txt
     
+    - name: Setup config files for CI
+      run: |
+        if [ -f config_example.py ]; then
+          cp config_example.py config.py
+          echo "✓ Created config.py from config_example.py"
+        else
+          echo "Warning: config_example.py not found, creating minimal config.py"
+          echo "DEFAULT_RESUME = 'data/your_resume.pdf'" > config.py
+          echo "SCRAPE_RESULTS_LIMIT = 20" >> config.py
+          echo "USER_AGENT = 'Mozilla/5.0'" >> config.py
+          echo "LOCAL_LLM_MODEL_PATH = 'models/orca-mini-3b-gguf2-q4_0.gguf'" >> config.py
+          echo "OUTPUT_CSV = 'outputs/jobs.csv'" >> config.py
+          echo "COVER_LETTERS_DIR = 'cover_letters'" >> config.py
+        fi
+        if [ -f email_config_example.py ]; then
+          cp email_config_example.py email_config.py
+        else
+          echo "# Email config placeholder" > email_config.py
+          echo "EMAIL_ENABLED = False" >> email_config.py
+        fi
+        echo "✓ Config files setup complete"
+    
     - name: Test module imports
       run: |
         python -c "from src.parse_resume import parse_resume; print('✓ Resume parsing module loaded')"
@@ -59,6 +81,28 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         pip install -r requirements.txt
+    
+    - name: Setup config files for CI
+      run: |
+        if [ -f config_example.py ]; then
+          cp config_example.py config.py
+          echo "✓ Created config.py from config_example.py"
+        else
+          echo "Warning: config_example.py not found, creating minimal config.py"
+          echo "DEFAULT_RESUME = 'data/your_resume.pdf'" > config.py
+          echo "SCRAPE_RESULTS_LIMIT = 20" >> config.py
+          echo "USER_AGENT = 'Mozilla/5.0'" >> config.py
+          echo "LOCAL_LLM_MODEL_PATH = 'models/orca-mini-3b-gguf2-q4_0.gguf'" >> config.py
+          echo "OUTPUT_CSV = 'outputs/jobs.csv'" >> config.py
+          echo "COVER_LETTERS_DIR = 'cover_letters'" >> config.py
+        fi
+        if [ -f email_config_example.py ]; then
+          cp email_config_example.py email_config.py
+        else
+          echo "# Email config placeholder" > email_config.py
+          echo "EMAIL_ENABLED = False" >> email_config.py
+        fi
+        echo "✓ Config files setup complete"
     
     - name: Check Python syntax
       run: |

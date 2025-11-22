@@ -5,7 +5,12 @@ from app import run_pipeline
 import sys
 import os
 from datetime import datetime
-from config import SCRAPE_RESULTS_LIMIT
+
+# Import config with defaults for CI/testing
+try:
+    from config import SCRAPE_RESULTS_LIMIT
+except ImportError:
+    SCRAPE_RESULTS_LIMIT = 20
 
 def load_company_watchlist(file_path="companies.txt"):
     """Load company watchlist from file if exists"""
